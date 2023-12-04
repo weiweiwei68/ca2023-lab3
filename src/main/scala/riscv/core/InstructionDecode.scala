@@ -196,6 +196,18 @@ class InstructionDecode extends Module {
 
   // lab3(InstructionDecode) begin
 
+  io.memory_read_enable := Mux (
+    opcode === InstructionTypes.L,
+    true.B,
+    false.B
+  )
+  
+  io.memory_write_enable := Mux (
+    opcode === InstructionTypes.S,
+    true.B,
+    false.B
+  )
+
   // lab3(InstructionDecode) end
 
   io.wb_reg_write_source := MuxCase(
